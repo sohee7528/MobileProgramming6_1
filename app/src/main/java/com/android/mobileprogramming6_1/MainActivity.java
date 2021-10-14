@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        Button button3 = findViewById(R.id.button3);
+        Button button4 = findViewById(R.id.button4);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +36,66 @@ public class MainActivity extends AppCompatActivity {
                 });
                 dlg.setCancelable(false);
                 dlg.show();
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] versionArray = new String[]{"R(11)","Q(10)","파이"};
+                AlertDialog.Builder dlg=new AlertDialog.Builder(MainActivity.this);
+                dlg.setTitle("좋아하는 버전은?");
+                dlg.setItems(versionArray, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        button2.setText(versionArray[i]);
+                    }
+                });
+                dlg.setIcon(R.mipmap.ic_launcher);
+                dlg.setPositiveButton("닫기",null);
+                dlg.setCancelable(false);
+                dlg.show();
+
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] versionArray = new String[]{"R(11)","Q(10)","파이"};
+                AlertDialog.Builder dlg=new AlertDialog.Builder(MainActivity.this);
+                dlg.setTitle("좋아하는 버전은?");
+                dlg.setSingleChoiceItems(versionArray,0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        button3.setText(versionArray[i]);
+                    }
+                });
+                dlg.setIcon(R.mipmap.ic_launcher);
+                dlg.setPositiveButton("닫기",null);
+                dlg.setCancelable(false);
+                dlg.show();
+
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] versionArray = new String[]{"R(11)","Q(10)","파이"};
+                boolean[] checkArray=new boolean[]{true,true,false};
+                AlertDialog.Builder dlg=new AlertDialog.Builder(MainActivity.this);
+                dlg.setTitle("좋아하는 버전은?");
+                dlg.setMultiChoiceItems(versionArray, checkArray, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                                button4.setText(versionArray[i]);
+                            }
+                        });
+                        dlg.setIcon(R.mipmap.ic_launcher);
+                dlg.setPositiveButton("닫기",null);
+                dlg.setCancelable(false);
+                dlg.show();
+
             }
         });
     }
